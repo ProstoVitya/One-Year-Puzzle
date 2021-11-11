@@ -83,7 +83,6 @@ public class FirstPuzzle : MonoBehaviour
 
                 if (puzzle[i] == TempPiece2)
                     index2 = i;
-
             }
 
             if (index1 != -1 && index2 != -1)
@@ -105,7 +104,9 @@ public class FirstPuzzle : MonoBehaviour
             _collider.enabled = true;
             _won = true;
 
-            PlayerPrefs.SetInt("openedLevels", SceneManager.GetActiveScene().buildIndex + 1);
+            int openedLevels = PlayerPrefs.GetInt("openedLevels");
+            if(openedLevels < SceneManager.GetActiveScene().buildIndex + 1)
+                PlayerPrefs.SetInt("openedLevels", SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
